@@ -1,0 +1,173 @@
+/* ACF Dynamic Templates - Frontend Styles */
+
+/* Container fallback when Bootstrap is disabled */
+.acfdt-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* Team Members Grid */
+.acfdt-team-members-grid {
+  padding: 40px 0;
+}
+
+.acfdt-team-member-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  overflow: hidden;
+}
+
+.acfdt-team-member-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+}
+
+.acfdt-member-photo {
+  padding: 20px;
+  text-align: center;
+}
+
+.acfdt-member-photo img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 4px solid #f0f0f0;
+}
+
+.acfdt-member-info h3 {
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.acfdt-member-info .text-muted {
+  color: #666;
+  font-weight: 500;
+  margin-bottom: 15px;
+}
+
+.acfdt-member-links {
+  margin-top: 15px;
+}
+
+/* Testimonials Styles */
+.acfdt-testimonials-grid {
+  padding: 40px 0;
+}
+
+.acfdt-testimonial-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 30px;
+  border-radius: 10px;
+  position: relative;
+  margin-bottom: 30px;
+}
+
+.acfdt-testimonial-card::before {
+  content: "'";
+  font-size: 60px;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  opacity: 0.3;
+}
+
+.acfdt-testimonial-content {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.acfdt-testimonial-author {
+  display: flex;
+  align-items: center;
+}
+
+.acfdt-testimonial-author img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.acfdt-testimonial-author-info h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.acfdt-testimonial-author-info .company {
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+/* Portfolio Styles */
+.acfdt-portfolio-grid {
+  padding: 40px 0;
+}
+
+.acfdt-portfolio-item {
+  position: relative;
+  margin-bottom: 30px;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.acfdt-portfolio-item img {
+  width: 100%;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.acfdt-portfolio-item:hover img {
+  transform: scale(1.1);
+}
+
+.acfdt-portfolio-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    rgba(0, 0, 0, 0.8) 100%
+  );
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.acfdt-portfolio-item:hover .acfdt-portfolio-overlay {
+  opacity: 1;
+}
+
+.acfdt-portfolio-overlay h3 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+.acfdt-portfolio-overlay .category {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .acfdt-member-photo img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .acfdt-testimonial-content {
+    font-size: 16px;
+  }
+}
