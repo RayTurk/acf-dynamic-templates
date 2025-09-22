@@ -1,0 +1,108 @@
+/* Testimonials - Common Styles */
+.acfdt-testimonial-card, .acfdt-testimonial-slide {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 25px;
+    margin-bottom: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.acfdt-testimonial-card__content, .acfdt-testimonial-slide__content {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #555;
+    margin: 0 0 20px;
+    flex-grow: 1;
+}
+
+.acfdt-testimonial-card__content:before, .acfdt-testimonial-slide__content:before {
+    content: '“';
+    font-size: 2.5rem;
+    color: #ddd;
+    margin-right: 5px;
+    line-height: 0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.acfdt-testimonial-card__author, .acfdt-testimonial-slide__author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+}
+
+.acfdt-testimonial-card__author-photo img, .acfdt-testimonial-slide__author-photo img {
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    margin-right: 15px;
+}
+
+.acfdt-testimonial-card__author-info, .acfdt-testimonial-slide__author-info {
+    text-align: left;
+}
+
+.acfdt-testimonial-card__author-name, .acfdt-testimonial-slide__author-name {
+    font-weight: 600;
+    margin: 0;
+}
+
+.acfdt-testimonial-card__author-meta, .acfdt-testimonial-slide__author-meta {
+    color: #777;
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.acfdt-testimonial-card__rating {
+    margin-bottom: 15px;
+}
+
+.acfdt-testimonial-card__rating .dashicons {
+    color: #ffb900;
+}
+
+
+/* Slider Layout */
+.acfdt-testimonials--slider .carousel-inner {
+    padding: 20px 0 40px; /* Space for controls */
+}
+
+.acfdt-testimonials--slider .carousel-control-prev,
+.acfdt-testimonials--slider .carousel-control-next {
+    width: 5%;
+}
+
+.acfdt-testimonials--slider .carousel-control-prev-icon,
+.acfdt-testimonials--slider .carousel-control-next-icon {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 50%;
+    background-size: 50%;
+}
+
+/* Fallback Slider */
+.acfdt-testimonials--slider-fallback {
+    position: relative;
+    overflow: hidden;
+    min-height: 250px;
+}
+
+.acfdt-testimonial-slide-fallback {
+    display: none;
+    animation: acfdt-fade 1.5s;
+    width: 100%;
+}
+
+.acfdt-testimonial-slide-fallback.active {
+    display: block;
+}
+
+@keyframes acfdt-fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}

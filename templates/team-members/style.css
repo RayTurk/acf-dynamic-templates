@@ -1,0 +1,178 @@
+/* Team Members - Common Styles */
+.acfdt-team-member-card, .acfdt-team-member-item {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
+}
+
+.acfdt-team-member-card:hover, .acfdt-team-member-item:hover {
+    box-shadow: 0 8px 12px rgba(0,0,0,0.1);
+}
+
+.acfdt-img-fluid {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Grid Layout */
+.acfdt-team-members--grid .acfdt-team-member-card__photo {
+    text-align: center;
+    padding: 20px 20px 0;
+}
+
+.acfdt-team-members--grid .acfdt-team-member-card__photo img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    margin: 0 auto;
+}
+
+.acfdt-team-members--grid .acfdt-team-member-card__content {
+    padding: 20px;
+    text-align: center;
+}
+
+.acfdt-team-member-card__name {
+    margin: 0 0 5px;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.acfdt-team-member-card__position {
+    margin: 0 0 15px;
+    color: #777;
+    font-style: italic;
+}
+
+.acfdt-team-member-card__bio {
+    margin: 0 0 15px;
+    color: #555;
+}
+
+.acfdt-team-member-card__social {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* List Layout */
+.acfdt-team-members--list .acfdt-team-member-item {
+    display: flex;
+    align-items: flex-start;
+}
+
+.acfdt-team-members--list .acfdt-team-member-item__photo {
+    padding: 20px;
+    flex-shrink: 0;
+}
+
+.acfdt-team-members--list .acfdt-team-member-item__photo img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.acfdt-team-members--list .acfdt-team-member-item__content {
+    padding: 20px;
+}
+
+.acfdt-team-member-item__name {
+     margin: 0 0 5px;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+.acfdt-team-member-item__position {
+    margin: 0 0 10px;
+    color: #777;
+    font-style: italic;
+}
+
+.acfdt-team-member-item__bio {
+    margin: 0 0 15px;
+    color: #555;
+}
+
+.acfdt-team-member-item__social {
+    display: flex;
+    gap: 15px;
+}
+
+
+/* Social Links */
+.acfdt-social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    color: #555;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.acfdt-social-link:hover {
+    background-color: #337ab7; /* A generic primary color */
+    color: #fff;
+}
+
+.acfdt-social-link .dashicons {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 1.8;
+}
+
+/* Non-Bootstrap Grid Fallback */
+.acfdt-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.acfdt-col {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
+}
+
+.acfdt-col-3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.acfdt-col-4 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+.acfdt-col-9 {
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+
+@media (min-width: 768px) {
+    .acfdt-col-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+     .acfdt-col-4 {
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+    }
+    .acfdt-col-9 {
+        flex: 0 0 75%;
+        max-width: 75%;
+    }
+}
