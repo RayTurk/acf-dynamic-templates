@@ -44,7 +44,8 @@ class ACFDT_Shortcode_Handler {
     public function render_shortcode( $atts ) {
         $atts = shortcode_atts( [
             'type'    => '',
-            'layout'  => 'grid', // Default layout
+            'layout'  => 'grid', // Default layout for lists
+            'display' => 'list', // 'list' (repeater) or 'single'
             'post_id' => get_the_ID(),
             'class'   => '', // Custom CSS class
             'id'      => '', // Custom CSS ID
@@ -53,7 +54,13 @@ class ACFDT_Shortcode_Handler {
         // Validate attributes
         $template_id = sanitize_text_field( $atts['type'] );
         $layout = sanitize_text_field( $atts['layout'] );
+        $display = sanitize_text_field( $atts['display'] );
         $post_id = absint( $atts['post_id'] );
+
+        // If displaying a single item, we force the layout to 'single'.
+        if ( 'single' === $display ) {
+            $layout = 'single';
+        }
 
         if ( empty( $template_id ) ) {
             return '<!-- ACF Dynamic Templates: "type" attribute is missing. -->';
