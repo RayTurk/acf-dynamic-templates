@@ -1,64 +1,61 @@
 <?php
-
 /**
- * Team Members Grid Display Template
+ * Team Members - Grid Layout
+ *
+ * @var array $fields The fields from get_fields().
+ * @var array $atts The shortcode attributes.
  */
 
-$team_members = get_field('team_members');
-
-if (! $team_members) {
-  return;
+if ( empty( $fields['team_members'] ) ) {
+    return;
 }
 
-$columns = $args['columns'] ?? 3;
-$col_class = 'col-md-' . (12 / $columns);
+$columns = ! empty( $atts['columns'] ) ? absint( $atts['columns'] ) : 3;
+$use_bootstrap = get_option( 'acf_dt_bootstrap_enabled', false );
+$row_class = $use_bootstrap ? 'row' : 'acfdt-row';
+$col_class = $use_bootstrap ? 'col-md-' . ( 12 / $columns ) : 'acfdt-col acfdt-col-' . ( 12 / $columns );
+
 ?>
-
-<div class="acfdt-team-members-grid">
-  <div class="<?php echo get_option('acfdt_use_bootstrap') ? 'container' : 'acfdt-container'; ?>">
-    <div class="row">
-      <?php foreach ($team_members as $member) : ?>
-        <div class="<?php echo esc_attr($col_class); ?> mb-4">
-          <div class="acfdt-team-member-card h-100">
-            <?php if ($member['photo']) : ?>
-              <div class="acfdt-member-photo">
-                <img src="<?php echo esc_url($member['photo']['sizes']['medium']); ?>"
-                  alt="<?php echo esc_attr($member['name']); ?>"
-                  class="img-fluid rounded-circle">
-              </div>
-            <?php endif; ?>
-
-            <div class="acfdt-member-info text-center p-3">
-              <h3 class="h5"><?php echo esc_html($member['name']); ?></h3>
-
-              <?php if ($member['position']) : ?>
-                <p class="text-muted"><?php echo esc_html($member['position']); ?></p>
-              <?php endif; ?>
-
-              <?php if ($member['bio']) : ?>
-                <p class="small"><?php echo esc_html($member['bio']); ?></p>
-              <?php endif; ?>
-
-              <div class="acfdt-member-links">
-                <?php if ($member['email']) : ?>
-                  <a href="mailto:<?php echo esc_attr($member['email']); ?>"
-                    class="btn btn-sm btn-outline-primary me-2">
-                    Email
-                  </a>
-                <?php endif; ?>
-
-                <?php if ($member['linkedin']) : ?>
-                  <a href="<?php echo esc_url($member['linkedin']); ?>"
-                    target="_blank"
-                    class="btn btn-sm btn-outline-info">
-                    LinkedIn
-                  </a>
-                <?php endif; ?>
-              </div>
+<div class="acfdt-team-members acfdt-team-members--grid">
+    <div class="<?php echo esc_attr( $row_class ); ?>">
+        <?php foreach ( $fields['team_members'] as $member ) : ?>
+            <div class="<?php echo esc_attr( $col_class ); ?>">
+                <div class="acfdt-team-member-card">
+                    <?php if ( ! empty( $member['photo'] ) ) : ?>
+                        <div class="acfdt-team-member-card__photo">
+                            <?php echo wp_get_attachment_image( $member['photo']['ID'], 'medium_large', false, [ 'class' => 'acfdt-img-fluid' ] ); ?>
+                        </div>
+                    <?php endif; ?>
+                    <div class="acfdt-team-member-card__content">
+                        <?php if ( ! empty( $member['name'] ) ) : ?>
+                            <h3 class="acfdt-team-member-card__name"><?php echo esc_html( $member['name'] ); ?></h3>
+                        <?php endif; ?>
+                        <?php if ( ! empty( $member['position'] ) ) : ?>
+                            <p class="acfdt-team-member-card__position"><?php echo esc_html( $member['position'] ); ?></p>
+                        <?php endif; ?>
+                        <?php if ( ! empty( $member['bio'] ) ) : ?>
+                            <div class="acfdt-team-member-card__bio"><?php echo wp_kses_post( $member['bio'] ); ?></div>
+                        <?php endif; ?>
+                        <div class="acfdt-team-member-card__social">
+                            <?php if ( ! empty( $member['email'] ) ) : ?>
+                                <a href="mailto:<?php echo esc_attr( $member['email'] ); ?>" class="acfdt-social-link acfdt-social-link--email" aria-label="<?php esc_attr_e( 'Email', 'acf-dt' ); ?>">
+                                    <span class="dashicons dashicons-email-alt"></span>
+                                </a>
+                            <?php endif; ?>
+                            <?php if ( ! empty( $member['linkedin'] ) ) : ?>
+                                <a href="<?php echo esc_url( $member['linkedin'] ); ?>" target="_blank" rel="noopener noreferrer" class="acfdt-social-link acfdt-social-link--linkedin" aria-label="<?php esc_attr_e( 'LinkedIn', 'acf-dt' ); ?>">
+                                    <span class="dashicons dashicons-linkedin"></span>
+                                </a>
+                            <?php endif; ?>
+                            <?php if ( ! empty( $member['twitter'] ) ) : ?>
+                                <a href="<?php echo esc_url( $member['twitter'] ); ?>" target="_blank" rel="noopener noreferrer" class="acfdt-social-link acfdt-social-link--twitter" aria-label="<?php esc_attr_e( 'Twitter', 'acf-dt' ); ?>">
+                                   <span class="dashicons dashicons-twitter"></span>
+                                </a>
+                            <?php endif; ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-      <?php endforeach; ?>
+        <?php endforeach; ?>
     </div>
-  </div>
 </div>

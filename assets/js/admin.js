@@ -1,71 +1,78 @@
-<script>
-  jQuery(document).ready(function($) {
-    // Template import functionality
-    $('.acfdt-import-btn').on('click', function (e) {
-      e.preventDefault();
+(function($) {
+    'use strict';
 
-      var $button = $(this);
-      var template = $button.data('template');
-      var originalText = $button.text();
+    $(function() {
 
-      $button.text('Importing...').prop('disabled', true);
+        // Handle template import
+        $('#acfdt-templates-grid').on('click', '.acfdt-import-btn', function(e) {
+            e.preventDefault();
 
-      $.ajax({
-        url: ajaxurl,
-        type: 'POST',
-        data: {
-          action: 'acfdt_import_template',
-          template: template,
-          nonce: acfdt_admin.nonce
-        },
-        success: function (response) {
-          if (response.success) {
-            $button.text('✓ Imported').addClass('button-success');
+            var $button = $(this);
+            var templateId = $button.data('template-id');
+            var $status = $button.parent().find('.acfdt-import-status');
 
-            // Show success message
-            var $notice = $('<div class="notice notice-success is-dismissible"><p>' +
-              response.message + '</p></div>');
-            $('.wrap h1').after($notice);
+            if ($button.hasClass('disabled') || $button.prop('disabled')) {
+                return;
+            }
 
-            // Auto-dismiss after 3 seconds
-            setTimeout(function () {
-              $notice.fadeOut();
-            }, 3000);
-          } else {
-            $button.text(originalText).prop('disabled', false);
+            $.ajax({
+                url: acfdt_ajax.ajax_url,
+                type: 'POST',
+                data: {
+                    action: 'acfdt_import_template',
+                    nonce: acfdt_ajax.nonce,
+                    template_id: templateId
+                },
+                beforeSend: function() {
+                    $button.prop('disabled', true);
+                    $status.text(acfdt_ajax.importing_text).removeClass('error success').addClass('importing').show();
+                },
+                success: function(response) {
+                    if (response.success) {
+                        $button.text(acfdt_ajax.imported_text).addClass('button-secondary').removeClass('button-primary');
+                        $status.text(response.data.message).removeClass('importing error').addClass('success');
+                    } else {
+                        $button.prop('disabled', false);
+                        $status.text(response.data.message).removeClass('importing success').addClass('error');
+                    }
+                },
+                error: function() {
+                    $button.prop('disabled', false);
+                    $status.text('An unexpected error occurred.').removeClass('importing success').addClass('error');
+                }
+            });
+        });
 
-            // Show error message
-            var $notice = $('<div class="notice notice-error is-dismissible"><p>' +
-              response.message + '</p></div>');
-            $('.wrap h1').after($notice);
-          }
-        },
-        error: function () {
-          $button.text(originalText).prop('disabled', false);
-          alert('An error occurred. Please try again.');
-        }
-      });
+        // Handle shortcode copy to clipboard
+        $('#acfdt-templates-grid').on('click', '.acfdt-copy-shortcode', function(e) {
+            e.preventDefault();
+            var $button = $(this);
+            var $code = $button.siblings('code');
+            var textToCopy = $code.text();
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(textToCopy).then(function() {
+                    var originalText = $button.text();
+                    $button.text('Copied!');
+                    setTimeout(function() {
+                        $button.text(originalText);
+                    }, 2000);
+                });
+            } else {
+                // Fallback for older browsers
+                var $temp = $('<input>');
+                $('body').append($temp);
+                $temp.val(textToCopy).select();
+                document.execCommand('copy');
+                $temp.remove();
+                var originalText = $button.text();
+                $button.text('Copied!');
+                setTimeout(function() {
+                    $button.text(originalText);
+                }, 2000);
+            }
+        });
+
     });
 
-  // Copy shortcode to clipboard
-  $('.acfdt-shortcode-preview code').on('click', function() {
-        var $code = $(this);
-  var text = $code.text();
-
-  // Create temporary input
-  var $temp = $('<input>');
-    $('body').append($temp);
-    $temp.val(text).select();
-    document.execCommand('copy');
-    $temp.remove();
-
-    // Visual feedback
-    var originalText = $code.text();
-    $code.text('✓ Copied!').css('background', '#4CAF50').css('color', 'white');
-
-    setTimeout(function() {
-      $code.text(originalText).css('background', '').css('color', '');
-        }, 1500);
-    });
-});
-</script>
+})(jQuery);

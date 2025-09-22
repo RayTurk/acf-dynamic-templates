@@ -1,63 +1,184 @@
 {
-  "key": "group_acfdt_team_members",
-  "title": "Team Members",
-  "fields": [
-    {
-      "key": "field_acfdt_team_repeater",
-      "label": "Team Members",
-      "name": "team_members",
-      "type": "repeater",
-      "layout": "block",
-      "sub_fields": [
+    "name": "Team Members",
+    "description": "A template to display a list of team members with their photos, positions, and social media links.",
+    "key": "group_team_members",
+    "title": "Template: Team Members",
+    "fields": [
         {
-          "key": "field_acfdt_member_name",
-          "label": "Name",
-          "name": "name",
-          "type": "text",
-          "required": 1
-        },
-        {
-          "key": "field_acfdt_member_position",
-          "label": "Position",
-          "name": "position",
-          "type": "text"
-        },
-        {
-          "key": "field_acfdt_member_bio",
-          "label": "Bio",
-          "name": "bio",
-          "type": "textarea",
-          "rows": 4
-        },
-        {
-          "key": "field_acfdt_member_image",
-          "label": "Photo",
-          "name": "photo",
-          "type": "image",
-          "return_format": "array"
-        },
-        {
-          "key": "field_acfdt_member_email",
-          "label": "Email",
-          "name": "email",
-          "type": "email"
-        },
-        {
-          "key": "field_acfdt_member_linkedin",
-          "label": "LinkedIn URL",
-          "name": "linkedin",
-          "type": "url"
+            "key": "field_team_members_repeater",
+            "label": "Team Members",
+            "name": "team_members",
+            "type": "repeater",
+            "instructions": "Add and manage team members here.",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "collapsed": "field_team_member_name",
+            "min": 0,
+            "max": 0,
+            "layout": "block",
+            "button_label": "Add Member",
+            "sub_fields": [
+                {
+                    "key": "field_team_member_photo",
+                    "label": "Photo",
+                    "name": "photo",
+                    "type": "image",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "25",
+                        "class": "",
+                        "id": ""
+                    },
+                    "return_format": "array",
+                    "preview_size": "thumbnail",
+                    "library": "all",
+                    "min_width": "",
+                    "min_height": "",
+                    "min_size": "",
+                    "max_width": "",
+                    "max_height": "",
+                    "max_size": "",
+                    "mime_types": ""
+                },
+                {
+                    "key": "field_team_member_name",
+                    "label": "Name",
+                    "name": "name",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "75",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_team_member_position",
+                    "label": "Position",
+                    "name": "position",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 1,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "maxlength": ""
+                },
+                {
+                    "key": "field_team_member_bio",
+                    "label": "Bio",
+                    "name": "bio",
+                    "type": "textarea",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "maxlength": "",
+                    "rows": 4,
+                    "new_lines": ""
+                },
+                {
+                    "key": "field_team_member_email",
+                    "label": "Email",
+                    "name": "email",
+                    "type": "email",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": ""
+                },
+                {
+                    "key": "field_team_member_linkedin",
+                    "label": "LinkedIn URL",
+                    "name": "linkedin",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                },
+                {
+                    "key": "field_team_member_twitter",
+                    "label": "Twitter URL",
+                    "name": "twitter",
+                    "type": "url",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33.33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "placeholder": ""
+                }
+            ]
         }
-      ]
-    }
-  ],
-  "location": [
-    [
-      {
-        "param": "post_type",
-        "operator": "==",
-        "value": "page"
-      }
-    ]
-  ]
+    ],
+    "location": [
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "post"
+            }
+        ],
+        [
+            {
+                "param": "post_type",
+                "operator": "==",
+                "value": "page"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": false,
+    "modified": 1678886400
 }

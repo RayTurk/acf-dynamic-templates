@@ -1,173 +1,48 @@
 /* ACF Dynamic Templates - Frontend Styles */
 
-/* Container fallback when Bootstrap is disabled */
-.acfdt-container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
+.acfdt-template-container {
+    margin: 20px 0;
 }
 
-/* Team Members Grid */
-.acfdt-team-members-grid {
-  padding: 40px 0;
+/* Non-Bootstrap Grid Fallback */
+.acfdt-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
 }
 
-.acfdt-team-member-card {
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;
+.acfdt-col {
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    box-sizing: border-box;
 }
 
-.acfdt-team-member-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+/* Default to full width on small screens */
+.acfdt-col-1, .acfdt-col-2, .acfdt-col-3, .acfdt-col-4, .acfdt-col-5, .acfdt-col-6, .acfdt-col-7, .acfdt-col-8, .acfdt-col-9, .acfdt-col-10, .acfdt-col-11, .acfdt-col-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
 }
 
-.acfdt-member-photo {
-  padding: 20px;
-  text-align: center;
+/* Medium screens and up */
+@media (min-width: 768px) {
+    .acfdt-col-1 { flex: 0 0 8.333333%; max-width: 8.333333%; }
+    .acfdt-col-2 { flex: 0 0 16.666667%; max-width: 16.666667%; }
+    .acfdt-col-3 { flex: 0 0 25%; max-width: 25%; }
+    .acfdt-col-4 { flex: 0 0 33.333333%; max-width: 33.333333%; }
+    .acfdt-col-5 { flex: 0 0 41.666667%; max-width: 41.666667%; }
+    .acfdt-col-6 { flex: 0 0 50%; max-width: 50%; }
+    .acfdt-col-7 { flex: 0 0 58.333333%; max-width: 58.333333%; }
+    .acfdt-col-8 { flex: 0 0 66.666667%; max-width: 66.666667%; }
+    .acfdt-col-9 { flex: 0 0 75%; max-width: 75%; }
+    .acfdt-col-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+    .acfdt-col-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+    .acfdt-col-12 { flex: 0 0 100%; max-width: 100%; }
 }
 
-.acfdt-member-photo img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border: 4px solid #f0f0f0;
-}
-
-.acfdt-member-info h3 {
-  color: #333;
-  margin-bottom: 5px;
-}
-
-.acfdt-member-info .text-muted {
-  color: #666;
-  font-weight: 500;
-  margin-bottom: 15px;
-}
-
-.acfdt-member-links {
-  margin-top: 15px;
-}
-
-/* Testimonials Styles */
-.acfdt-testimonials-grid {
-  padding: 40px 0;
-}
-
-.acfdt-testimonial-card {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 30px;
-  border-radius: 10px;
-  position: relative;
-  margin-bottom: 30px;
-}
-
-.acfdt-testimonial-card::before {
-  content: "'";
-  font-size: 60px;
-  position: absolute;
-  top: 10px;
-  left: 20px;
-  opacity: 0.3;
-}
-
-.acfdt-testimonial-content {
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 20px;
-}
-
-.acfdt-testimonial-author {
-  display: flex;
-  align-items: center;
-}
-
-.acfdt-testimonial-author img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin-right: 15px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.acfdt-testimonial-author-info h4 {
-  margin: 0;
-  font-size: 16px;
-}
-
-.acfdt-testimonial-author-info .company {
-  opacity: 0.8;
-  font-size: 14px;
-}
-
-/* Portfolio Styles */
-.acfdt-portfolio-grid {
-  padding: 40px 0;
-}
-
-.acfdt-portfolio-item {
-  position: relative;
-  margin-bottom: 30px;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-}
-
-.acfdt-portfolio-item img {
-  width: 100%;
-  height: auto;
-  transition: transform 0.3s ease;
-}
-
-.acfdt-portfolio-item:hover img {
-  transform: scale(1.1);
-}
-
-.acfdt-portfolio-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    to bottom,
-    transparent 0%,
-    rgba(0, 0, 0, 0.8) 100%
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 20px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.acfdt-portfolio-item:hover .acfdt-portfolio-overlay {
-  opacity: 1;
-}
-
-.acfdt-portfolio-overlay h3 {
-  color: white;
-  margin-bottom: 10px;
-}
-
-.acfdt-portfolio-overlay .category {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: 14px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .acfdt-member-photo img {
-    width: 120px;
-    height: 120px;
-  }
-
-  .acfdt-testimonial-content {
-    font-size: 16px;
-  }
+.acfdt-img-fluid {
+    max-width: 100%;
+    height: auto;
 }
